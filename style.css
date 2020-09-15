@@ -1,0 +1,10 @@
+main {
+    text-align:center;
+    margin: 10px;
+    border-style: groove;
+    border-width: 3px;
+}
+
+.hidden {
+    display: none;
+}
