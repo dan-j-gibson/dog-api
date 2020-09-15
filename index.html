@@ -4,24 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random Dog API</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet"
-    type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" 
+    rel="stylesheet" type="text/css" />
     <link href="style.css" rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.js" crossorigin="anonymous"></script>    
+    <script src="app.js"></script>
 </head>
 <body>
     <main>
         
         <form class="choose-number-form">
            <h1>Multiple Random Dog API</h1> 
-           <input type="text" class="num-dog" placeholder="Between 1-50" required>
-            <input type="submit" value="Ruff!"></input>
+           <input type="text" class="num-dog" value="3" required>
+            <input class="js-button-submit" type="submit" value="Ruff!"></input>
         </form>
-        <!-- <div class="dog-photo hidden">
+        <section class="results hidden js-results">
             <h2>A brand new dog!</h2>
-            <img class="results-img" alt="placeholder">
-        </div> -->
+            <!--<img class="results-img" alt="placeholder">-->
+          </section>
+        </div>
     </main>
 </body>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.js" crossorigin="anonymous"></script>
-<script src="app.js"></script>
+
 </html>

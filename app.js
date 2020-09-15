@@ -8,11 +8,25 @@
 // return random image if valid and error message of no connection
 'use strict';
 
+// proposed finished version
+function getDogImages(query, displayCallback) {
+  fetch(`https://dog.ceo/api/breeds/image/random/${query}`)
+ .then(response => response.json())
+ .then(responseJson => {
+   console.log(responseJson)
+   return responseJson
+ }) 
+ .then(responseJson => displayCallback(responseJson))
+ .catch(error => alert('Something went wrong. Try again later.'));
+}
+
+
+// original version
 function getImage(userNumber){
   if (userNumber < 3) {
     fetch("https://dog.ceo/api/breeds/image/random/3")
       .then(response => response.json())
-      .then(responseJson => console.log(responseJson));
+      .then(responseJson => displayResults(responseJson));
   } else if (userNumber > 50) {
     return alert("Please choose a number equal or less than 50");
   } else {
@@ -29,13 +43,16 @@ function getImage(userNumber){
 // );
 
 function watchNumberInput() {
-  $(".choose-number-form").submit(e => {
-    e.preventDefault();
+  $(".choose-number-form").submit(event => {
+    event.preventDefault();
     let numberOfDogs = $(".num-dog").val();
     //Pass the number value to getDogImage
     getImage(numberOfDogs);
   });
 }
+
+
+
 
 
     // for(let i=0; i <= userNumber; i++){
@@ -58,3 +75,21 @@ $(function() {
   console.log('App loaded! Waiting for submit!');
   watchForm();
 });
+
+
+function displayResults(responseJson) {
+  console.log(responseJson);
+  //replace the existing image with the new one
+  return `<div>
+    <img src="${responseJson}" class="results-img"></div>
+  </div>`
+
+}
+
+function displayDogSearchData(data) {
+  const results = data.message.map((item, index) => displayResults(item));
+  $('.js-results').html(results); 
+  
+  //display the results section
+  $('.dog-photo').removeClass('hidden');
+}
