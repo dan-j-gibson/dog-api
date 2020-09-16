@@ -10,18 +10,18 @@ function getImages(query, callback) {
  .catch(error => alert('Something went wrong. Try again later.'));
 }
 else {
-  return alert('please enter a number between 1 and 50')
+  return alert('please enter a number beetween 1 and 50')
 }
 }
 
 
 function displayResults(responseJson) {
- $('.results').replaceWith( `
+ return `
  <div class="img-containter">
  <h5>Check Out This Pupper</h5>
-   <img src="https://images.dog.ceo/breeds/affenpinscher/n02110627_2416.jpg" class="results-img">
+   <img src="${responseJson}" class="results-img">
  </div>
- `) ;
+ ` ;
 }
 
 function searchData(data) {
@@ -47,4 +47,3 @@ $(function() {
  console.log('App loaded! Waiting for submit!');
  listenToInput();
 }); 
-
